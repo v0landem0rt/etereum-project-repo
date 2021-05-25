@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FlaskBlog</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">  
+    <script type="text/javascript" src="{{ url_for('static', filename='node_modules/web3/dist/web3.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='node_modules/tarp/require/require.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='metamask.js') }}"></script>
+
+
+
+
+
+</head>
+<body>
+   <h1>Welcome to erc1155 app</h1>
+
+   <h1> <button id="button_1">#1 ERC 20 - 3</button></h1>
+   <h2> <button id="button_2">#2 ERC 20 - 2</button></h2>
+   <h3><button id="button_3">#3 ERC 20 - 4</button></h3>
+   <h3><button id="button_4">#4 ERC 20 - 6</button></h3>
+   <h3><button id="button_5">#5 ERC 20 - 5</button></h3>
+
+<h3><div id="container" ></div></h3>
+
+   <h4><p id="text_change">transaction 1(send ether)</p></h4>
+   <h5><p id="text_change1">transaction 2(mint erc721 and send to user)</p></h5>
+   <h6><p id="text_change2">transaction 3(mint erc1155)</p></h6>
+   <h6><p id="text_change3">id of erc1155(it will load for 1 minute because waiting of transaction confirm)</p></h6>
+
+
+<h3><form action="http://127.0.0.1:5000/tokeninfo" target="_blank">
+   <button>get erc1155 info</button>
+  </form></h3>
+
+<script>
+
+koefficent=0;
+
+let vektor_a=[]; //тут будут 4 актива
+
+const btn1 = document.getElementById("button_1");
+const btn2 = document.getElementById("button_2");
+const btn3 = document.getElementById("button_3");
+const btn4 = document.getElementById("button_4");
+const btn5 = document.getElementById("button_5");
+
+p = document.getElementById('text_change');
+p1 = document.getElementById('text_change1');
+p2 = document.getElementById('text_change2');
+p4 = document.getElementById('text_change3');
+
+
+var dataMasiv = [];
+
+
+async function postData(url = '', data = {}, x) {
+  // Default options are marked with *
+  const response = await fetch(url, {
+    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    mode: 'no-cors', // no-cors, *cors, same-origin
+    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'same-origin', // include, *same-origin, omit
+    headers: {
+      'Content-Type': 'application/json'
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    redirect: 'follow', // manual, *follow, error
+    referrerPolicy: 'no-referrer', // no-referrer, *client
+    body: JSON.stringify(data) // body data type must match "Content-Type" header
+  });
+  let a = await response.json();
+  dataMasiv = Object.values(a);
+  //console.log(dataMasiv); //тут вывод переменной
+  createSelect(dataMasiv,x)
+  
+  return dataMasiv; // parses JSON response into native JavaScript objects
+}
+
+
+var textinmasiv = "";
+
+function createSelect(dataMasiv,x){ //функция для выбора пакета с активами(тут мы отрисовываем выпадающую менюшку и отправляем в блокчейн актив который выбрал пользователь)
+  let select = document.createElement('select');
+  for (let i = 0; i <= (dataMasiv.length-1); i++) { 
+
+    let option = document.createElement('option');
+    textinmasiv = "asset "+(i+1).toString()+" - ";
+
+    for (let j = 0; j <= 2; j++) {
+       //console.log(j,'-',i);
+       textinmasiv = textinmasiv+" "+ (dataMasiv[i][j]).toString();
+      }
+    option.value     = textinmasiv; //можно в value записать, то что передадим в блокчейн
+    option.innerText = textinmasiv;    
+    select.appendChild(option);
+  }
+  select.setAttribute("id", "id_you_like");
+  document.getElementById('container').appendChild(select);
+  
+
+  document.getElementById('id_you_like').addEventListener('change', function() {  //тут мы выбираем себе актив в элементе select
+    //console.log('You selected: ', this.value);
+    callContract(x,this.value);
+  });
+ 
+
+//тут добавляем listener для элемента, потом добавим функции отправки в блокчейн
+
+
+
+}
+
+
+
+btn1.onclick = function (evt) {  
+   if (vektor_a.length<4){
+      vektor_a.push(3);
+      koefficent=koefficent+3;
+
+   }
+   if (vektor_a.length==4){		//тут мы отправляем данные на сервак
+      
+	postData('http://127.0.0.1:5000/getjs', { vektor_a },koefficent)
+  	 .then((data) => {
+
+  	});
+        
+        koefficent=0;
+
+
+
+   }
+
+};
+
+btn2.onclick = function (evt) {  
+  if (vektor_a.length<4){
+      vektor_a.push(2);
+      koefficent=koefficent+2;
+   }
+   if (vektor_a.length==4){		
+      
+	postData('http://127.0.0.1:5000/getjs', { vektor_a },koefficent)
+  	 .then((data) => {
+
+  	});
+        koefficent=0;
+   }
+
+
+};
+
+
+btn3.onclick = function(evt) { 
+  if (vektor_a.length<4){
+      vektor_a.push(4);
+      koefficent=koefficent+4.2;
+   }
+   if (vektor_a.length==4){		
+      
+	postData('http://127.0.0.1:5000/getjs', { vektor_a },koefficent)
+  	 .then((data) => {
+
+  	});
+	koefficent=0;
+   }
+ 
+};
+
+
+btn4.onclick = function(evt) { 
+  if (vektor_a.length<4){
+      vektor_a.push(6);
+      koefficent=koefficent+6;
+   }
+   if (vektor_a.length==4){		
+      
+	postData('http://127.0.0.1:5000/getjs', { vektor_a },koefficent)
+  	 .then((data) => {
+
+  	});
+        koefficent=0;
+   }
+ 
+};
+
+btn5.onclick = function(evt) { 
+  if (vektor_a.length<4){
+      
+      vektor_a.push(5);
+      koefficent=koefficent+2.5;
+   }
+   if (vektor_a.length==4){		
+      
+	postData('http://127.0.0.1:5000/getjs', { vektor_a },koefficent)
+  	 .then((data) => {
+
+  	});
+        koefficent=0;
+   }
+ 
+};
+
+
+	
+
+    </script>
+
+
+</body>
+</html>
