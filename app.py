@@ -2,8 +2,10 @@ from flask import Flask, render_template, session, request, redirect, Response
 import numpy as np
 import sys
 import json
-sys.path.append('/home/lera/Downloads/flask_app/optimalsolutiontokenalgorithm1.py')
+sys.path.append('/home/lera/Downloads/flask_app/etereum-project-repo/optimalsolutiontokenalgorithm1.py')
+sys.path.append('/home/lera/Downloads/flask_app/etereum-project-repo/opt2.py')
 from optimalsolutiontokenalgorithm1 import Discrete
+from opt2 import Continuous
 
 
 app = Flask(__name__)
@@ -51,17 +53,34 @@ def form_example1():
 def get_js():
     if request.method == 'POST':
         js_variable = request.get_json(force=True)
-        f = open('text.txt', 'w')
         parsed_json=js_variable['vektor_a']
+        print('array ',parsed_json)
         A = np.array(parsed_json)
-        #A = np.array([3,4,3,5,8,2])
+        variant =A[0] #
+        A=np.delete(A, 0)
+
         N = len(A)
-        k = 3
-        my_res_1 = Discrete(A, N, k)
-        res_1, my_B= my_res_1.preprocess()
-        #f.write(f'a_star is {res_1}\nB is {my_B}')
-        res_distri = my_res_1.distribution(res_1, my_B)
-        res_distri = res_distri.tolist()
-        return Response(json.dumps(res_distri), mimetype='application/json')
+        if variant == 1:
+          k = 3
+          my_res_1 = Discrete(A, N, k)
+          res_1, my_B= my_res_1.preprocess()
+          res_distri = my_res_1.distribution(res_1, my_B)
+          res_distri = res_distri.tolist() #1st algoritm result
+        else:
+          my_var = np.var(A)
+          length = len(A)
+          my_min = np.min(A)
+          my_max = np.max(A)
+          rand1 = np.random.randint(my_min, my_max + 1, size=length)
+          rand2 = np.random.randint(my_min, my_max + 1, size=length)
+          cov_rand = np.cov(rand1, rand2)[0, 0]
+          var_red = cov_rand/my_var
+          my_res_1 = Continuous(N, A, var_red)
+          res_distri = my_res_1.search()
+          #res_distri = my_res_1.construct_pack(res_1) - надо будет добавить
+          res_distri = res_distri.astype(int)
+          res_distri = res_distri.tolist() #  2 algoritm result
+          print('res2', res_distri)
+    return Response(json.dumps(res_distri), mimetype='application/json')
 
 

@@ -10,7 +10,8 @@ class Continuous:
     def search(self):
         E = 0
         V = 0
-        a_n = np.zeros(N)
+        a_n = np.zeros(self.N)
+        N = self.N
         A = self.A
         var = self.var
         A = np.insert(A, 0, 0)
@@ -50,7 +51,7 @@ class Continuous:
 
 
 if __name__ == "__main__":
-    A = np.array([3,4,5])#np.array([2,3,7,4,9]) #np.array([1,2,4])
+    A = np.array([3,4,5])
     N = len(A)
 
     my_var = np.var(A)

@@ -13,15 +13,21 @@
 <body>
    <h1>Welcome to erc1155 app</h1>
 
-<h3><button onclick="callContract1()" >token erc1155 info</button>
+<h3><button id="MyForm" onclick="callContract1()" >token erc1155 info</button>
 
-<form action="" method="post">
+<form action="" method="post" >
         <input type="text" placeholder="token_id" name="token id" id="tokenID" value="{{request.form.token_id }}">
 </form></h3>
 
 <h6><p id="textchange">erc1155 token info:</p></h6>
 
 <script>async function callContract1() { //функция для вызова erc1155
+
+
+
+a=document.getElementById('tokenID').value;  //получаем данные о том что ввел пользователь
+console.log(a);
+
 
 var nameValue = parseInt(document.getElementById("tokenID").value);
 p = document.getElementById('textchange');

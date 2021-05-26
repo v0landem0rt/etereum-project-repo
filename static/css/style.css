@@ -37,3 +37,11 @@ h6 {
     padding: 10px;
     font-size: 150%
 }
+
+
+button {
+display:inline;
+}
+div {
+text-align: center;
+}
