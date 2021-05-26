@@ -78,16 +78,20 @@ async function postData(url = '', data = {}, x, pressed_button) {
   
   console.log(pressed_button);
   if (pressed_button==1){      //обработка результата для выбраного алгоритма
-  	createSelect(dataMasiv,x)
+  	createSelect(dataMasiv,x); //добавляем то что выдал 1 алгоритм  
   }
   else { //тут добавляем в токен, то что выдал 2 алгоритм
-       let data_text = "asset - ";
+       dataMasiv = dataMasiv.map(function(each_element){
+    		return Number(each_element.toFixed(2)); //округляем
+       });
+ 
+       let data_text = "asset composition with second algoritm - ";
        for (let j = 0; j < dataMasiv.length; j++) {
-       		//console.log(j,'-',i);
+
        		data_text = data_text+" "+ (dataMasiv[j]).toString();
       }
-     console.log(data_text);
-     //callContract(x,data_text);
+     //console.log(data_text);
+     callContract(x,data_text);
   }
   
   return dataMasiv; // parses JSON response into native JavaScript objects

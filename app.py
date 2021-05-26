@@ -67,6 +67,7 @@ def get_js():
           res_distri = my_res_1.distribution(res_1, my_B)
           res_distri = res_distri.tolist() #1st algoritm result
         else:
+          #A=np.delete(A, 0)
           my_var = np.var(A)
           length = len(A)
           my_min = np.min(A)
@@ -76,9 +77,11 @@ def get_js():
           cov_rand = np.cov(rand1, rand2)[0, 0]
           var_red = cov_rand/my_var
           my_res_1 = Continuous(N, A, var_red)
-          res_distri = my_res_1.search()
+
+          res_1 = my_res_1.search()
+          res_distri = my_res_1.construct_pack(res_1)
           #res_distri = my_res_1.construct_pack(res_1) - надо будет добавить
-          res_distri = res_distri.astype(int)
+          #res_distri = res_distri.astype(int)
           res_distri = res_distri.tolist() #  2 algoritm result
           print('res2', res_distri)
     return Response(json.dumps(res_distri), mimetype='application/json')
