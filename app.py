@@ -67,7 +67,7 @@ def get_js():
           res_distri = my_res_1.distribution(res_1, my_B)
           res_distri = res_distri.tolist() #1st algoritm result
         else:
-          #A=np.delete(A, 0)
+          print('A for 2nd algo - ',A)
           my_var = np.var(A)
           length = len(A)
           my_min = np.min(A)
