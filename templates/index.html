@@ -15,13 +15,13 @@
 </head>
 <body>
    <h1>Welcome to erc1155 app</h1>
-   
+   <div><p>choose portfolio potimisation: </p><button id="button_6">Discrete optimization of portfolio</button> <button id="button_7">Continuous optimization of portfolio</button></div>
    <h1> <button id="button_1">#1 ERC 20 - 3</button></h1>
    <h2> <button id="button_2">#2 ERC 20 - 2</button></h2>
    <h3><button id="button_3">#3 ERC 20 - 4</button></h3>
    <h3><button id="button_4">#4 ERC 20 - 6</button></h3>
    <h3><button id="button_5">#5 ERC 20 - 5</button></h3>
-   <div><button id="button_6">Discrete optimization of portfolio</button> <button id="button_7">Continuous optimization of portfolio</button></div>
+   
 <h3><div id="container" ></div></h3>
 
    <h4><p id="text_change">transaction 1(send ether)</p></h4>
@@ -76,7 +76,7 @@ async function postData(url = '', data = {}, x, pressed_button) {
   let a = await response.json();
   dataMasiv = Object.values(a);
   
-  console.log(pressed_button);
+  //console.log(pressed_button);
   if (pressed_button==1){      //обработка результата для выбраного алгоритма
   	createSelect(dataMasiv,x); //добавляем то что выдал 1 алгоритм  
   }
@@ -133,7 +133,12 @@ function createSelect(dataMasiv,x){ //функция для выбора пак�
 
 
 
-btn1.onclick = function (evt) {  
+btn1.onclick = function (evt) {
+   if (vektor_a.length==0){
+       alert('choose portfolio optimisation first');
+       return;
+   }
+  
    if (vektor_a.length<5){
       vektor_a.push(3);
       koefficent=koefficent+3;
@@ -155,6 +160,10 @@ btn1.onclick = function (evt) {
 };
 
 btn2.onclick = function (evt) {  
+   if (vektor_a.length==0){
+       alert('choose portfolio optimisation first');
+       return;
+   }
   if (vektor_a.length<5){
       vektor_a.push(2);
       koefficent=koefficent+2;
@@ -174,6 +183,10 @@ btn2.onclick = function (evt) {
 
 
 btn3.onclick = function(evt) { 
+   if (vektor_a.length==0){
+       alert('choose portfolio optimisation first');
+       return;
+   }
   if (vektor_a.length<5){
       vektor_a.push(4);
       koefficent=koefficent+4.2;
@@ -192,6 +205,10 @@ btn3.onclick = function(evt) {
 
 
 btn4.onclick = function(evt) { 
+   if (vektor_a.length==0){
+       alert('choose portfolio optimisation first');
+       return;
+   }
   if (vektor_a.length<5){
       vektor_a.push(6);
       koefficent=koefficent+6;
@@ -209,6 +226,10 @@ btn4.onclick = function(evt) {
 };
 
 btn5.onclick = function(evt) { 
+   if (vektor_a.length==0){
+       alert('choose portfolio optimisation first');
+       return;
+   }
   if (vektor_a.length<5){
       
       vektor_a.push(5);

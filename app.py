@@ -54,7 +54,7 @@ def get_js():
     if request.method == 'POST':
         js_variable = request.get_json(force=True)
         parsed_json=js_variable['vektor_a']
-        print('array ',parsed_json)
+        #print('array ',parsed_json)
         A = np.array(parsed_json)
         variant =A[0] #
         A=np.delete(A, 0)
@@ -83,7 +83,7 @@ def get_js():
           #res_distri = my_res_1.construct_pack(res_1) - надо будет добавить
           #res_distri = res_distri.astype(int)
           res_distri = res_distri.tolist() #  2 algoritm result
-          print('res2', res_distri)
+          #print('res2', res_distri)
     return Response(json.dumps(res_distri), mimetype='application/json')
 
 
