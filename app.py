@@ -6,12 +6,12 @@ sys.path.append('/home/lera/Downloads/flask_app/etereum-project-repo/optimalsolu
 sys.path.append('/home/lera/Downloads/flask_app/etereum-project-repo/opt2.py')
 from optimalsolutiontokenalgorithm1 import Discrete
 from opt2 import Continuous
-
+import os
 
 app = Flask(__name__)
 app.secret_key = 'super secret key'
 
-
+os.system("export FLASK_ENV=development")
 
 @app.route('/login', methods=['GET', 'POST'])
 def hello_world():

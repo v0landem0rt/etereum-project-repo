@@ -1,90 +1,25 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Token info page</title>
-    <link rel="shortcut icon" href="../images/fav_icon.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-    <!-- Bulma Version 0.9.0-->
-    <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
-    <link rel="stylesheet" href="{{ url_for('static', filename= 'tokeninfo.css') }}">
+    <meta charset="UTF-8">
+    <title>FlaskBlog</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">  
     <script type="text/javascript" src="{{ url_for('static', filename='node_modules/web3/dist/web3.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='node_modules/tarp/require/require.min.js') }}"></script>
 
-     <script type="text/javascript" src="{{ url_for('static', filename='bulma.js') }}"></script>
+
+
 </head>
-
 <body>
-    <section class="hero is-info is-fullheight">
-        <div class="hero-head">
-            <nav class="navbar">
-                <div class="container">
-                    <div class="navbar-brand">
-                        <span class="navbar-burger burger" data-target="navbarMenu">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </span>
-                    </div>
-                    <div id="navbarMenu" class="navbar-menu">
-                        <div class="navbar-end">
-                            
-                          <span class="navbar-item">
-                                <a class="button is-white is-outlined" href="http://127.0.0.1:5000/">
-                                    <span class="icon">
-                                        <i class="fa fa-home"></i> 
-                                    </span> 
-                                    <span>Main page</span>
-                                </a>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-            </div>
+   <h1>Welcome to erc1155 app</h1>
 
-            <div class="hero-body">
-                <div class="container has-text-centered">
-                    <div class="column is-6 is-offset-3">
-                        <h1 class="title">
-                            Here you can know info about ERC1155 tokens
-                        </h1>
-                        <h2 class="subtitle">
-                            Please insert token id here
-                        </h2>
-                        <div class="box">
-                            <div class="field is-grouped">
-                                <p class="control is-expanded">
-                                    <input class="input" type="text" id="tokenID" placeholder="Enter your tokenid">
-                                </p>
-                                <p class="control">
-                                    <a class="button is-info" onclick="callContract1()">
-                                         Press Me
-                                    </a>
-                                </p>
+<h3><button id="MyForm" onclick="callContract1()" >token erc1155 info</button>
 
-                            </div>
-                        </div>
-                               
-                    </div>
-                </div>
-            </div>
+<form action="" method="post" >
+        <input type="text" placeholder="token_id" name="token id" id="tokenID" value="{{request.form.token_id }}">
+</form></h3>
 
-    </section>
-
-
-
-
-
-
-
-
-
-
+<h6><p id="textchange">erc1155 token info:</p></h6>
 
 <script>async function callContract1() { //функция для вызова erc1155
 
@@ -95,8 +30,8 @@ console.log(a);
 
 
 var nameValue = parseInt(document.getElementById("tokenID").value);
-p = document.getElementById('tokenID');
-console.log(p);
+console.log(nameValue)
+p = document.getElementById('textchange');
 
     if (window.ethereum) {
         window.web3 = new Web3(ethereum);
@@ -502,11 +437,10 @@ console.log(p);
 
 
            eth1155contract.methods.uri(nameValue).call(option,function(error,result){ 
-	        if (! error){
-                        console.log(result);
-			p.value =  result;}
-		else {
-			console.log(error);}
+	        if (! error)
+			p.innerHTML = 'erc1155 token info: ' + result;
+		else
+			console.log(error);
 		 });
 
 
@@ -530,4 +464,7 @@ console.log(p);
 
 </script>
 
+
+
 </body>
+</html>
