@@ -18,7 +18,7 @@ def hello_world():
     render_template('login.html')
     error = None
     if request.method == 'POST':
-        if request.form['username'] == 'admin' and request.form['password'] == '5f4d44dfaa1b1ed72a8a3e963500a05d0f55829ac42af044e33f39c9f6f71a3a':
+        if request.form['username'] == 'admin' and request.form['password'] == '':
             session['admin'] = request.form['username']
             return redirect('http://127.0.0.1:5000')
         else:
