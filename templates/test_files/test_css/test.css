@@ -1,0 +1,68 @@
+
+
+.big {
+  font-size: 1.2em;
+}
+/* Custom dropdown */
+#id_you_like {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 10px; /* demo only */
+}
+
+#id_you_like select {
+  cursor:pointer;
+  background-color: #041221/*#2980b9*/;
+  color: ghostwhite/*#fff*/;
+  font-size: inherit;
+  padding: .5em;
+  padding-right: 2.5em;	
+  border: 0;
+  margin: 0;
+  border-radius: 3px;
+  text-indent: 0.01px;
+  text-overflow: '';
+  -webkit-appearance: button; /* hide default arrow in chrome OSX */
+}
+
+#id_you_like::before,
+#id_you_like::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+#id_you_like::after { /*  Custom dropdown arrow */
+  content: "\25BC";
+  height: 1em;
+  font-size: .625em;
+  line-height: 1;
+  right: 1.2em;
+  top: 50%;
+  margin-top: -.5em;
+}
+
+#id_you_like::before { /*  Custom dropdown arrow cover */
+  width: 2em;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 0 3px 3px 0;
+}
+
+#id_you_like select[disabled] {
+  color: crimson/*rgba(0,0,0,.3)*/;
+}
+
+#id_you_like select[disabled]::after {
+  color: rgba(0,0,0,.1);
+}
+
+#id_you_like::before {
+  background-color: rgba(0,0,0,.15);
+}
+
+#id_you_like::after {
+  color: rgba(0,0,0,.4);
+}

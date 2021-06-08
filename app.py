@@ -20,7 +20,7 @@ def hello_world():
     if request.method == 'POST':
         if request.form['username'] == 'admin' and request.form['password'] == '5f4d44dfaa1b1ed72a8a3e963500a05d0f55829ac42af044e33f39c9f6f71a3a':
             session['admin'] = request.form['username']
-            return render_template('index.html')
+            return redirect('http://127.0.0.1:5000')
         else:
             error = 'Invalid Credentials. Please try again.'
     return render_template('login.html', error=error)
@@ -42,11 +42,20 @@ def form_example():
 def form_example1():
     if 'admin' not in session:
         return redirect('http://127.0.0.1:5000/login')
-        
-        
-        
+              
     else:
         return render_template('tokeninfo.html')
+
+
+
+'''@app.route('/transactions', methods=['GET', 'POST'])
+def transactions():
+    if 'admin' not in session:
+        return redirect('http://127.0.0.1:5000/login')
+              
+    else:
+        return render_template('transactionss.html')'''
+
 
 
 @app.route('/getjs', methods=['GET','POST'])

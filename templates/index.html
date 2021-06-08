@@ -1,39 +1,194 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>FlaskBlog</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">  
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Crypto World</title>
+    <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
+    <script src="https://kit.fontawesome.com/7dc3015a44.js" crossorigin="anonymous"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='cardsData.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'cards.css') }}"> 
     <script type="text/javascript" src="{{ url_for('static', filename='node_modules/web3/dist/web3.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='node_modules/tarp/require/require.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='metamask.js') }}"></script>
+
+  </head>
+
+ <body>
+
+    <!-- START NAV -->
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="#">
+
+          </a>
+          <span class="navbar-burger burger" data-target="navbarMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </div>
+        <div id="navbarMenu" class="navbar-menu">
+          <div class="navbar-end">
+            <a class="navbar-item is-active">
+              Home
+            </a>
+            <a class="navbar-item" id="button_6">
+              Discrete optimization of portfolio
+            </a>
+            <a class="navbar-item" id="button_7">
+              Continuous optimization of portfolio
+
+            </a>
 
 
 
 
 
-</head>
-<body>
-   <h1>Welcome to erc1155 app</h1>
-   <div><p>choose portfolio optimisation: </p><button id="button_6">Discrete optimization of portfolio</button> <button id="button_7">Continuous optimization of portfolio</button></div>
-   <h1> <button id="button_1">#1 ERC 20 - 3</button></h1>
-   <h2> <button id="button_2">#2 ERC 20 - 2</button></h2>
-   <h3><button id="button_3">#3 ERC 20 - 4</button></h3>
-   <h3><button id="button_4">#4 ERC 20 - 6</button></h3>
-   <h3><button id="button_5">#5 ERC 20 - 5</button></h3>
+
+            <a class="navbar-item"><span id="idyou_like"><div id="container" ></div></span></a>
+            <a href="http://127.0.0.1:5000/tokeninfo" class="navbar-item">
+              Token Info Page
+            </a>
+            <a class="navbar-item">
+              Archives
+            </a>
+            <!--<a href="http://127.0.0.1:5000/transactions" class="navbar-item">
+              transacctions
+            </a> -->
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- END NAV -->
+
+    <div class="container">
+      <div class="section">
+        <div class="columns">
+          <div class="column has-text-centered">
+            <h1 class="title" style="color: ghostwhite;">Cryptocurrency Trading Page</h1><br>
+          </div>
+        </div>
+        <div id="app" class="row columns is-multiline"> 
+          <div v-for="card in cardData" key="card.id" class="column is-4" style="justify-content: center;" >
+            <div class="card large">
+              <div class="card-image">
+                <figure class="image is-16by9">
+                  <img :src="card.image" alt="Image">
+                </figure>
+              </div>
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-left">
+                    <!-- <figure class="image is-48x48">
+                      <img :src="card.avatar" alt="Image">
+                    </figure> -->
+                  </div>
+                  <div class="media-content">
+                    <p class="title is-4 no-padding">[[card.user.title]]</p>
+                    <p>
+                      <span class="title is-6">
+                          <!-- <a> [[card.user.handle]] </a> </span> </p> -->  <a><tab></a> </span> </p>
+                   <!--  <p class="subtitle is-6"><tab></p> -->
+                    <p class="subtitle is-6">[[card.content]]</p>
+                    <p class="subtitle is-6"><div id="example-1"><input type="checkbox" :id=`${card.number}` name="cc" />
+<label for="c1"><span></span>Choose me</label></div></p>
+                  </div>
+                </div>
+
+
+
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+<div class="column is-4" style="justify-content: center;">
+  <div class="card large">
+     <div class="card-image">
+        <figure class="image is-16by9">
+            <img src="https://news.bitcoin.com/wp-content/uploads/2019/01/russia-ai-crypto.jpg" alt="Image">
+        </figure>
+     </div> 
+    <div class="card-content">
+      <div class="media">
    
-<h3><div id="container" ></div></h3>
+         <div class="media-content">
+		<p class="title is-4 no-padding">Transactions</p> 
+		<p><span class="title is-6"><a href="http://twitter.com/cryptocurrency info">  </a></span></p> 
+                <p><span class="title is-6"><a href="http://twitter.com/cryptocurrency info">  </a></span></p> 
+		
+                <p class="subtitle is-6">_____________</p>
+                <p class="subtitle is-6" id="text_change">Transaction 1</p>
+                <p class="subtitle is-6" id="text_change1">Transaction 2</p>
+                <p class="subtitle is-6" id="text_change2">Transaction 3</p>
+                <p class="subtitle is-6" id="text_change3">Token id</p>
+            
+         </div>
+         <div class="content">
+               <div class="background-icon">
+                     <span class="icon-twitter"></span>
+         </div>
+      </div> 
+    
+</div>
+</div>
+</div>
 
-   <h4><p id="text_change">transaction 1(send ether)</p></h4>
-   <h5><p id="text_change1">transaction 2(mint erc721 and send to user)</p></h5>
-   <h6><p id="text_change2">transaction 3(mint erc1155)</p></h6>
-   <h6><p id="text_change3">id of erc1155(it will load for 1 minute because waiting of transaction confirm)</p></h6>
 
 
-<h3><form action="http://127.0.0.1:5000/tokeninfo" target="_blank">
-   <button>get erc1155 info</button>
-  </form></h3>
 
+
+
+
+
+
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <div class="content has-text-centered">
+          <div class="soc">
+            <a href="#"><i class="fa fa-github-alt fa-lg" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-youtube fa-lg" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a>
+          </div>
+          <p>
+            <strong>Build</strong> by bulma templates.
+            The source code is licensed <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. <br>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+
+
+    <!-- Using Vue to populate cards to reduce redundant code -->
+    <script>
+      var app = new Vue({
+        el: '#app',
+        delimiters : ['[[', ']]'],
+        data: {
+          cardData: cardsData
+        }
+      })
+
+    </script>
+</div>
 <script>
 
 koefficent=0;
@@ -41,18 +196,19 @@ koefficent=0;
 let vektor_a=[]; //тут будут 4 актива
 
 
-const btn1 = document.getElementById("button_1");
-const btn2 = document.getElementById("button_2");
-const btn3 = document.getElementById("button_3");
-const btn4 = document.getElementById("button_4");
-const btn5 = document.getElementById("button_5");
+const btn1 = document.getElementById("1"); //проставлем чекбоксы и кнопки выбора алгоритма
+const btn2 = document.getElementById("2");
+const btn3 = document.getElementById("3");
+const btn4 = document.getElementById("4");
+const btn5 = document.getElementById("5");
 const btn6 = document.getElementById("button_6");
 const btn7 = document.getElementById("button_7");
 
-p = document.getElementById('text_change');
-p1 = document.getElementById('text_change1');
-p2 = document.getElementById('text_change2');
-p4 = document.getElementById('text_change3');
+
+p = document.getElementById('text_change');//trans 1
+p1 = document.getElementById('text_change1');//trans 2
+p2 = document.getElementById('text_change2');//trans 3
+p4 = document.getElementById('text_change3');//id of token
 
 
 var dataMasiv = [];
@@ -76,7 +232,7 @@ async function postData(url = '', data = {}, x, pressed_button) {
   let a = await response.json();
   dataMasiv = Object.values(a);
   
-  //console.log(pressed_button);
+
   if (pressed_button==1){      //обработка результата для выбраного алгоритма
   	createSelect(dataMasiv,x); //добавляем то что выдал 1 алгоритм  
   }
@@ -90,7 +246,7 @@ async function postData(url = '', data = {}, x, pressed_button) {
 
        		data_text = data_text+" "+ (dataMasiv[j]).toString();
       }
-     //console.log(data_text);
+     console.log('x -',x);
      callContract(x,data_text);
   }
   
@@ -102,6 +258,11 @@ var textinmasiv = "";
 
 function createSelect(dataMasiv,x){ //функция для выбора пакета с активами(тут мы отрисовываем выпадающую менюшку и отправляем в блокчейн актив который выбрал пользователь)
   let select = document.createElement('select');
+  let option = document.createElement('option');
+  option.value     = "        "; 
+  option.innerText = "choose  asset  composition";  
+select.appendChild(option);
+
   for (let i = 0; i <= (dataMasiv.length-1); i++) { 
 
     let option = document.createElement('option');
@@ -115,12 +276,31 @@ function createSelect(dataMasiv,x){ //функция для выбора пак�
     option.innerText = textinmasiv;    
     select.appendChild(option);
   }
+
+/*function createSelect(dataMasiv,x){ //функция для выбора пакета с активами(тут мы отрисовываем выпадающую менюшку и отправляем в блокчейн актив который выбрал пользователь)
+  let select = document.createElement('select');
+  for (let i = 0; i <= (dataMasiv.length-1); i++) { 
+
+    let option = document.createElement('option');
+    textinmasiv = "asset "+(i+1).toString()+" - ";
+
+    for (let j = 0; j <= 2; j++) {
+       //console.log(j,'-',i);
+       textinmasiv = textinmasiv+" "+ (dataMasiv[i][j]).toString();
+      }
+    option.value     = textinmasiv; //можно в value записать, то что передадим в блокчейн
+    option.innerText = textinmasiv;    
+    select.appendChild(option);
+  }*/
+
+
   select.setAttribute("id", "id_you_like");
   document.getElementById('container').appendChild(select);
   
 
   document.getElementById('id_you_like').addEventListener('change', function() {  //тут мы выбираем себе актив в элементе select
-    //console.log('You selected: ', this.value);
+    console.log(this);
+    console.log('You selected: ', this.value);
     callContract(x,this.value);
   });
  
@@ -140,7 +320,7 @@ btn1.onclick = function (evt) {
    }
   
    if (vektor_a.length<5){
-      if (this.style.backgroundColor != "green"){this.style.backgroundColor = "green"}
+      /*if (this.style.backgroundColor != "green"){this.style.backgroundColor = "green"}*/
       vektor_a.push(3);
       koefficent=koefficent+3;
 
@@ -154,9 +334,9 @@ btn1.onclick = function (evt) {
         vektor_a = [];
         koefficent=0;
 
-        for(let j = 2; j < 7; j++) {
+        /*for(let j = 2; j < 7; j++) {
         	buton[j].style.backgroundColor = "white";//вместо this надо button
-        }
+        }*/
 
    }
 
@@ -168,7 +348,7 @@ btn2.onclick = function (evt) {
        return;
    }
   if (vektor_a.length<5){
-      if (this.style.backgroundColor != "green"){this.style.backgroundColor = "green"}
+      /*if (this.style.backgroundColor != "green"){this.style.backgroundColor = "green"}*/
       vektor_a.push(2);
       koefficent=koefficent+2;
    }
@@ -180,9 +360,9 @@ btn2.onclick = function (evt) {
   	});
         koefficent=0;
        vektor_a = [];
-       for(let j = 2; j < 7; j++) {
+       /*for(let j = 2; j < 7; j++) {
         	buton[j].style.backgroundColor = "white";//вместо this надо button
-        }
+        }*/
    }
 
 
@@ -195,7 +375,7 @@ btn3.onclick = function(evt) {
        return;
    }
   if (vektor_a.length<5){
-      if (this.style.backgroundColor != "green"){this.style.backgroundColor = "green"}
+      /*if (this.style.backgroundColor != "green"){this.style.backgroundColor = "green"}*/
       vektor_a.push(4);
       koefficent=koefficent+4.2;
    }
@@ -207,9 +387,9 @@ btn3.onclick = function(evt) {
   	});
 	koefficent=0;
        vektor_a = [];
-        for(let j = 2; j < 7; j++) {
+        /*for(let j = 2; j < 7; j++) {
         	buton[j].style.backgroundColor = "white";//вместо this надо button
-        }
+        }*/
    }
  
 };
@@ -221,7 +401,7 @@ btn4.onclick = function(evt) {
        return;
    }
   if (vektor_a.length<5){
-      if (this.style.backgroundColor != "green"){this.style.backgroundColor = "green"}
+      //if (this.style.backgroundColor != "green"){this.style.backgroundColor = "green"}
       vektor_a.push(6);
       koefficent=koefficent+6;
    }
@@ -233,9 +413,9 @@ btn4.onclick = function(evt) {
   	});
         koefficent=0;
        vektor_a = [];
-        for(let j = 2; j < 7; j++) {
+        /*for(let j = 2; j < 7; j++) {
         	buton[j].style.backgroundColor = "white";//вместо this надо button
-        }
+        }*/
    }
  
 };
@@ -246,7 +426,7 @@ btn5.onclick = function(evt) {
        return;
    }
   if (vektor_a.length<5){
-      if (this.style.backgroundColor != "green"){this.style.backgroundColor = "green"}
+      //if (this.style.backgroundColor != "green"){this.style.backgroundColor = "green"}
       vektor_a.push(5);
       koefficent=koefficent+2.5;
    }
@@ -259,24 +439,573 @@ btn5.onclick = function(evt) {
         koefficent=0;
        vektor_a = [];
 
-        for(let j = 2; j < 7; j++) {
+        /*for(let j = 2; j < 7; j++) {
         	buton[j].style.backgroundColor = "white";//вместо this надо button
-        }
+        }*/
    }
  
 };
 btn6.onclick = function(evt) {
 vektor_a.push(1);
+
+this.classList.add("active");
+
 };
  
 btn7.onclick = function(evt) {
 vektor_a.push(2);
+this.classList.add("active");
 }
+
+
+
+
+
+
+
+
+
+
+
+
+async function callContract(x,added_data) { //функция для вызова erc1155
+
+    if (window.ethereum) {
+        window.web3 = new Web3(ethereum);
+        try {
+            await ethereum.enable();
+            var accounts= await web3.eth.getAccounts();
+            var option={from: accounts[0] };
+            var eth1155contract =  new web3.eth.Contract([
+		{
+			"inputs": [],
+			"stateMutability": "nonpayable",
+			"type": "constructor"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": true,
+					"internalType": "address",
+					"name": "account",
+					"type": "address"
+				},
+				{
+					"indexed": true,
+					"internalType": "address",
+					"name": "operator",
+					"type": "address"
+				},
+				{
+					"indexed": false,
+					"internalType": "bool",
+					"name": "approved",
+					"type": "bool"
+				}
+			],
+			"name": "ApprovalForAll",
+			"type": "event"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": true,
+					"internalType": "address",
+					"name": "operator",
+					"type": "address"
+				},
+				{
+					"indexed": true,
+					"internalType": "address",
+					"name": "from",
+					"type": "address"
+				},
+				{
+					"indexed": true,
+					"internalType": "address",
+					"name": "to",
+					"type": "address"
+				},
+				{
+					"indexed": false,
+					"internalType": "uint256[]",
+					"name": "ids",
+					"type": "uint256[]"
+				},
+				{
+					"indexed": false,
+					"internalType": "uint256[]",
+					"name": "values",
+					"type": "uint256[]"
+				}
+			],
+			"name": "TransferBatch",
+			"type": "event"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": true,
+					"internalType": "address",
+					"name": "operator",
+					"type": "address"
+				},
+				{
+					"indexed": true,
+					"internalType": "address",
+					"name": "from",
+					"type": "address"
+				},
+				{
+					"indexed": true,
+					"internalType": "address",
+					"name": "to",
+					"type": "address"
+				},
+				{
+					"indexed": false,
+					"internalType": "uint256",
+					"name": "id",
+					"type": "uint256"
+				},
+				{
+					"indexed": false,
+					"internalType": "uint256",
+					"name": "value",
+					"type": "uint256"
+				}
+			],
+			"name": "TransferSingle",
+			"type": "event"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": false,
+					"internalType": "string",
+					"name": "value",
+					"type": "string"
+				},
+				{
+					"indexed": true,
+					"internalType": "uint256",
+					"name": "id",
+					"type": "uint256"
+				}
+			],
+			"name": "URI",
+			"type": "event"
+		},
+		{
+			"inputs": [],
+			"name": "COUNTER",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [],
+			"name": "_baseduri",
+			"outputs": [
+				{
+					"internalType": "string",
+					"name": "",
+					"type": "string"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "account",
+					"type": "address"
+				},
+				{
+					"internalType": "uint256",
+					"name": "id",
+					"type": "uint256"
+				}
+			],
+			"name": "balanceOf",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address[]",
+					"name": "accounts",
+					"type": "address[]"
+				},
+				{
+					"internalType": "uint256[]",
+					"name": "ids",
+					"type": "uint256[]"
+				}
+			],
+			"name": "balanceOfBatch",
+			"outputs": [
+				{
+					"internalType": "uint256[]",
+					"name": "",
+					"type": "uint256[]"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "bytes",
+					"name": "token_data",
+					"type": "bytes"
+				},
+				{
+					"internalType": "string",
+					"name": "inside_data",
+					"type": "string"
+				}
+			],
+			"name": "create_erc1155_token",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "account",
+					"type": "address"
+				},
+				{
+					"internalType": "address",
+					"name": "operator",
+					"type": "address"
+				}
+			],
+			"name": "isApprovedForAll",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [],
+			"name": "my_contract_number_erc20",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [],
+			"name": "my_contract_token721_id",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "from",
+					"type": "address"
+				},
+				{
+					"internalType": "address",
+					"name": "to",
+					"type": "address"
+				},
+				{
+					"internalType": "uint256[]",
+					"name": "ids",
+					"type": "uint256[]"
+				},
+				{
+					"internalType": "uint256[]",
+					"name": "amounts",
+					"type": "uint256[]"
+				},
+				{
+					"internalType": "bytes",
+					"name": "data",
+					"type": "bytes"
+				}
+			],
+			"name": "safeBatchTransferFrom",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "from",
+					"type": "address"
+				},
+				{
+					"internalType": "address",
+					"name": "to",
+					"type": "address"
+				},
+				{
+					"internalType": "uint256",
+					"name": "id",
+					"type": "uint256"
+				},
+				{
+					"internalType": "uint256",
+					"name": "amount",
+					"type": "uint256"
+				},
+				{
+					"internalType": "bytes",
+					"name": "data",
+					"type": "bytes"
+				}
+			],
+			"name": "safeTransferFrom",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "operator",
+					"type": "address"
+				},
+				{
+					"internalType": "bool",
+					"name": "approved",
+					"type": "bool"
+				}
+			],
+			"name": "setApprovalForAll",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "bytes4",
+					"name": "interfaceId",
+					"type": "bytes4"
+				}
+			],
+			"name": "supportsInterface",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"name": "uri",
+			"outputs": [
+				{
+					"internalType": "string",
+					"name": "",
+					"type": "string"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		}
+	], '0x39e24256ad86ce068e4c047bbcbe5538a4dadb59');
+
+var tokenFactory =  new web3.eth.Contract([
+		{
+			"inputs": [
+				{
+					"internalType": "contract IERC20",
+					"name": "token1",
+					"type": "address"
+				}
+			],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "constructor"
+		},
+		{
+			"constant": false,
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "name",
+					"type": "string"
+				},
+				{
+					"internalType": "string",
+					"name": "symbol",
+					"type": "string"
+				},
+				{
+					"internalType": "string",
+					"name": "baseUrl",
+					"type": "string"
+				}
+			],
+			"name": "deploy721Contract",
+			"outputs": [
+				{
+					"internalType": "contract myERC721",
+					"name": "cardAddress",
+					"type": "address"
+				}
+			],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"constant": false,
+			"inputs": [],
+			"name": "transferErc20",
+			"outputs": [],
+			"payable": true,
+			"stateMutability": "payable",
+			"type": "function"
+		}
+	], '0x9406ed4b357b40cca2ea301bcd8a391d075be72c'); 
+aa= x.toString();
+console.log(aa);
+
+  ethereum
+    .request({
+      method: 'eth_sendTransaction',
+      params: [
+        {
+          from: accounts[0],
+          to: '0x2b7a6c8f1a77a602a6b356dc3fdfd11a1c56c1b6',
+          value: '0x29a2241af62c0000',
+          gasPrice: '0x09184e72a000', 
+          gas: aa,
+        },
+      ],
+    })
+.then((txHash) => p.innerHTML = 'transaction 1(send ether) ' + txHash)
+
+
+
+	   tokenFactory.methods.deploy721Contract(aa,aa,added_data).send(option,function(error,result){
+                if (! error)
+                    p1.innerHTML = 'transaction2 (mint erc721 and send to user) ' + result;
+                else
+                    console.log(error);  
+            });
+             console.log('222222');
+
+            eth1155contract.methods.create_erc1155_token(2,added_data).send(option,function(error,result){ //тут было начало
+                if (! error)
+                    p2.innerHTML = 'transaction3 (mint erc1155) ' + result;
+                else
+                    console.log(error);  
+            });
+            console.log('333333');
+
+
+function sleep(ms) {
+  return new Promise(resolve => {
+    setTimeout(resolve, ms);
+  });
+}
+
+
+     await sleep(60000);
+	eth1155contract.methods.COUNTER.call().call(option,function(error,result){ 
+	        if (! error)
+			p4.innerHTML ="id of erc1155 -- "+result;
+		else
+			console.log(error);
+		 });
+
+
+        } catch (error) {
+
+        }
+    }
+
+    else if (window.web3) {
+        window.web3 = new Web3(web3.currentProvider);
+
+        
+    }
+
+    else {
+        console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
+    }
+};
+
+
+
+
+
+
+
 
 
 
     </script>
 
+  </body>
 
-</body>
 </html>

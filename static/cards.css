@@ -1,0 +1,156 @@
+:root {
+  --bg: #071e36;
+  --card-bg: #041221;
+}
+
+
+tab {
+    display: inline-block;
+    margin-left: 40px;
+}
+
+
+
+body {
+ /* background: var(--bg); https://i.pinimg.com/originals/0c/c3/35/0cc3351ace440946b70ffc37711eda77.jpg */ 
+background: url(https://papers.co/wallpaper/papers.co-ng79-star-sky-night-space-dark-blue-35-3840x2160-4k-wallpaper.jpg);
+}
+
+.box {
+
+  background: var(--card-bg);
+}
+
+
+input::placeholder {
+  color: antiquewhite;
+}
+
+.navbar {
+  background: var(--card-bg);
+}
+
+.navbar-item {
+  color: ghostwhite;
+}
+
+
+/*custom*/
+.active {
+background: ghostwhite;
+ color: #3273DC;
+}
+
+
+/* Card start*/
+.card {
+  overflow: hidden;
+  background: ghostwhite;
+  color: var(--bg);
+   
+}
+
+.card.large {
+  border-radius: 5px;
+}
+
+.title.no-padding {
+  margin-bottom: 0 !important;
+}
+
+.footer {
+  background: var(--card-bg);
+  color: ghostwhite;
+}
+
+.footer p,
+strong {
+  color: ghostwhite
+}
+
+.footer a:hover {
+  color: crimson;
+}
+
+.fa {
+  color: ghostwhite;
+  margin: 10px
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.big {
+  font-size: 1.2em;
+}
+/* Custom dropdown */
+#idyou_like {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 10px; /* demo only */
+}
+
+#idyou_like select {
+  cursor:pointer;
+  background-color:  #041221;
+  color: ghostwhite/*#fff*/;
+  font-size: inherit;
+  padding: .5em;
+  padding-right: 2.5em;	
+  border: 0;
+  margin: 0;
+  border-radius: 3px;
+  text-indent: 0.01px;
+  text-overflow: '';
+  -webkit-appearance: button; /* hide default arrow in chrome OSX */
+}
+
+#idyou_like::before,
+#idyou_like::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+#idyou_like::after { /*  Custom dropdown arrow */
+  content: "\25BC";
+  height: 1em;
+  font-size: .625em;
+  line-height: 1;
+  right: 1.2em;
+  top: 50%;
+  margin-top: -.5em;
+}
+
+#idyou_like::before { /*  Custom dropdown arrow cover */
+  width: 2em;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 0 3px 3px 0;
+}
+
+#idyou_like select[disabled] {
+  color: crimson/*rgba(0,0,0,.3)*/;
+}
+
+#idyou_like select[disabled]::after {
+  color: rgba(0,0,0,.1);
+}
+
+#idyou_like::before {
+  background-color: rgba(0,0,0,.15);
+}
+
+#idyou_like::after {
+  color: rgba(0,0,0,.4);
+}
